@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Xrv2 Manash API Docs Page II
+  contact:
+    email: Manash@x0pa.com
+  x-logo:
+    url: 'https://x0pa.com/wp-content/uploads/2020/08/logo-New-X0PA-Purple-Transparent.png'
+  description:
+    $ref: ./description.md
+tags:
+  - name: Demo Docs
+    description: Here are some demo docs for some CRUD API(s) that you can use as a reference for your apis.
+    
+servers:
+  - url: 'https://localhost:5500/api/v1/'
+paths:
+  /demo/docs:
+    $ref: paths/demo/DemoGetAPI.yaml
+  /demo/docs/{demoUuid}:
+    $ref: paths/demo/DemoPostAPI.yaml

@@ -1,0 +1,96 @@
+get:
+  summary: Get all demo records
+  description: |
+    Get all demo records. Search, Sort and pagination supported.
+  tags:
+    - Demo Docs
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: limit
+      in: query          
+      required: false
+      schema:
+        type: number
+      description: This is for limiting the response. Its value can be between 1 and 100. By default it is 10.
+    
+    - name: offset
+      in: query          
+      required: false
+      schema:
+        type: number
+      description: This is for skipping the response. It can not be less than 0. By default it is 0.
+    
+    - name: searchKey
+      in: query          
+      required: false
+      schema:
+        type: string
+      description: |
+        This contains the seachTEXT. 
+        It searches based on file name only.
+
+    - name: sort
+      in: query 
+      required: false         
+      description: |
+        This will sort the response. 
+        Its value can be any of the followings. 
+        Default is created_at:desc.
+        Here asc mean ascending and desc means descending.
+      schema:
+        type: string
+        enum: [file_name:asc, file_name:desc, created_at:asc, created_at:desc, updated_at:asc, updated_at:desc]
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              limit:
+                type: number
+                description: The provided limit for responses. By default 10.
+                example: 10
+              offset:
+                type: number
+                description: The no of items skipped. By default 0.
+                example: 0
+              count:
+                type: number
+                description: Total no of matches on the DB.
+                example: 7579
+              records:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    file_id:
+                      type: string
+                      description: Unique id for the record on PostgreSQL DB
+                    file_name:
+                      type: string
+                      description: Name of the file
+                    url:
+                      type: string
+                      description: Url of the file.
+                    created_at:
+                      type: string
+                      description: created time
+                    updated_at:
+                      type: string
+                      description: last updated time
+    '400':
+      description: Error
+      content:
+        application/json:
+          schema:
+            schema:
+            type: object
+            properties:
+              error: 
+                type: boolean
+              message:
+                type: string

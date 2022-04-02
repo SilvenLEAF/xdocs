@@ -1,0 +1,24 @@
+{
+  "name": "xrv2docs",
+  "version": "1.0.0",
+  "description": "API Docs for Xrv2",
+  "main": "app.ts",
+  "scripts": {
+    "docs": "cd openapi && openapi preview-docs",    
+    "bundle": "cd openapi && openapi bundle -o apidocs && mv apidocs.yaml ../apidocs.yaml",    
+    "build": "npm run bundle && npx redoc-cli build apidocs.yaml -o docs.html",
+    "copyDocs": "bash movedocs.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@work:ManashX0PA/xrv2docs.git"
+  },
+  "keywords": [
+    "ManashX0PA",
+    "Docs",
+    "Automation"
+  ],
+  "author": "ManashX0PA",
+  "license": "MIT"
+}

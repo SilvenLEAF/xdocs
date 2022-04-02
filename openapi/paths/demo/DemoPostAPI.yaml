@@ -1,0 +1,53 @@
+post:
+  summary: Create demo record
+  description: |
+    Create demo record
+  tags:
+    - Demo Docs
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: demoUuid
+      in: path          
+      required: true
+      schema:
+        type: string
+      description: Uuid of the demo record.
+ 
+  requestBody:
+    content:
+      application/json: 
+        schema:
+          type: object
+          properties:
+            notes:
+              type: string
+              description: Demo record notes.
+              example: 我就是个后端工程师
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Demo record id.
+              notes:
+                type: string
+                description: Demo record notes.
+                example: 我就是个后端工程师
+    '400':
+      description: Error
+      content:
+        application/json:
+          schema:
+            schema:
+            type: object
+            properties:
+              error: 
+                type: boolean
+              message:
+                type: string

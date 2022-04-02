@@ -1,0 +1,175 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Xrv2 Manash API Docs Page II
+  contact:
+    email: Manash@x0pa.com
+  x-logo:
+    url: >-
+      https://x0pa.com/wp-content/uploads/2020/08/logo-New-X0PA-Purple-Transparent.png
+  description: "This is the docs for the **xrv2 API(s)** that were developed by Manash X0PA. \r\nIt starts from April 1st 2022. For previous docs check out the other docs.\r\nIf you have any questions or doubts regarding these, contact Manash Sarma\r\n(Manash@x0pa.com).\r\n  \r\n## Import NOTES:\r\n\r\nStep 1: Write your path name on ***root.yaml*** file. After creating the path details, we'll be referecing that details file here.\r\n\r\nStep2: Write the path details on ***paths/{group}/file.yaml***. \r\nThen reference this file on the ***root.yaml*** file for that path.\r\n\r\nStep 3: Run this following command to preview your docs. It is like a Live Server. You can run it first and edit docs while previewing it.\r\n```bash\r\nopenapi preview-docs\r\n```\r\n\r\n#### NOTE: \r\nIn order for this command to work, make sure you installed ***\"@redocly/openapi-cli\"*** package globally with this command\r\n```bash\r\nnpm i -g @redocly/openapi-cli\r\n```\r\n\r\nStep 4: When your docs are done. Run this following command to compile all files into one single file.\r\n```bash\r\nopenapi bundle -o apidocs\r\n```\r\nIt will create a ***apidocs.yaml*** file. Now we need to create an HTML file out of it. For that follow the next step.\r\n\r\nStep 5: To generate the HTML file, run this following command which will create a ***docs.html*** file.\r\n```bash\r\nnpx redoc-cli bundle apidocs.yaml -o docs.html\r\n```\r\n\r\nBONUS: Run this **\"movedocs.sh** script to automatically copy the **apidocs.yaml** and **docs.html** files to your intended repo.\r\nNow commit your changes and push to your respective repo. Feel free to use this ***docs*** to any of your repo!\r\n\r\nWith love Manash Sarma!"
+tags:
+  - name: Demo Docs
+    description: >-
+      Here are some demo docs for some CRUD API(s) that you can use as a
+      reference for your apis.
+servers:
+  - url: https://localhost:5500/api/v1/
+paths:
+  /demo/docs:
+    get:
+      summary: Get all demo records
+      description: |
+        Get all demo records. Search, Sort and pagination supported.
+      tags:
+        - Demo Docs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: number
+          description: >-
+            This is for limiting the response. Its value can be between 1 and
+            100. By default it is 10.
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: number
+          description: >-
+            This is for skipping the response. It can not be less than 0. By
+            default it is 0.
+        - name: searchKey
+          in: query
+          required: false
+          schema:
+            type: string
+          description: |
+            This contains the seachTEXT. 
+            It searches based on file name only.
+        - name: sort
+          in: query
+          required: false
+          description: |
+            This will sort the response. 
+            Its value can be any of the followings. 
+            Default is created_at:desc.
+            Here asc mean ascending and desc means descending.
+          schema:
+            type: string
+            enum:
+              - file_name:asc
+              - file_name:desc
+              - created_at:asc
+              - created_at:desc
+              - updated_at:asc
+              - updated_at:desc
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  limit:
+                    type: number
+                    description: The provided limit for responses. By default 10.
+                    example: 10
+                  offset:
+                    type: number
+                    description: The no of items skipped. By default 0.
+                    example: 0
+                  count:
+                    type: number
+                    description: Total no of matches on the DB.
+                    example: 7579
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        file_id:
+                          type: string
+                          description: Unique id for the record on PostgreSQL DB
+                        file_name:
+                          type: string
+                          description: Name of the file
+                        url:
+                          type: string
+                          description: Url of the file.
+                        created_at:
+                          type: string
+                          description: created time
+                        updated_at:
+                          type: string
+                          description: last updated time
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                schema: null
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                  message:
+                    type: string
+  /demo/docs/{demoUuid}:
+    post:
+      summary: Create demo record
+      description: |
+        Create demo record
+      tags:
+        - Demo Docs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: demoUuid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Uuid of the demo record.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: string
+                  description: Demo record notes.
+                  example: 我就是个后端工程师
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Demo record id.
+                  notes:
+                    type: string
+                    description: Demo record notes.
+                    example: 我就是个后端工程师
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                schema: null
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                  message:
+                    type: string
+components: {}
