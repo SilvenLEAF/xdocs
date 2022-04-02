@@ -1,7 +1,7 @@
 {
-  "name": "xrv2docs",
+  "name": "xdocs",
   "version": "1.0.0",
-  "description": "API Docs for Xrv2",
+  "description": "API Docs for PROD",
   "main": "app.ts",
   "scripts": {
     "docs": "cd openapi && openapi preview-docs",    
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@work:ManashX0PA/xrv2docs.git"
+    "url": "git@personal:SilvenLEAF/xdocs.git"
   },
   "keywords": [
-    "ManashX0PA",
+    "SilvenLEAF",
     "Docs",
     "Automation"
   ],
-  "author": "ManashX0PA",
+  "author": "SilvenLEAF",
   "license": "MIT"
 }

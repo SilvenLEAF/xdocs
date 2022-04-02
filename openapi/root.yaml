@@ -1,11 +1,11 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Xrv2 Manash API Docs Page II
+  title: SilvenLEAF API Docs
   contact:
-    email: Manash@x0pa.com
+    email: SilvenLEAF@gmail.com
   x-logo:
-    url: 'https://x0pa.com/wp-content/uploads/2020/08/logo-New-X0PA-Purple-Transparent.png'
+    url: 'https://silvenleaf.github.io/logos/SilvenLEAF.jpg'
   description:
     $ref: ./description.md
 tags:
@@ -13,7 +13,7 @@ tags:
     description: Here are some demo docs for some CRUD API(s) that you can use as a reference for your apis.
     
 servers:
-  - url: 'https://localhost:5500/api/v1/'
+  - url: 'https://localhost:7000/api/v1/'
 paths:
   /demo/docs:
     $ref: paths/demo/DemoGetAPI.yaml

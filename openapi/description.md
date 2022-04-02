@@ -1,7 +1,6 @@
-This is the docs for the **xrv2 API(s)** that were developed by Manash X0PA. 
-It starts from April 1st 2022. For previous docs check out the other docs.
-If you have any questions or doubts regarding these, contact Manash Sarma
-(Manash@x0pa.com).
+This is the docs for the **API(s)** that were developed by SilvenLEAF. 
+If you have any questions or doubts regarding these, contact SilvenLEAF
+(SilvenLEAF@gmail.com).
   
 ## Import NOTES:
 
